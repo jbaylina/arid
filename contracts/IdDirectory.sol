@@ -8,10 +8,14 @@ import "./AridConstants.sol";
 import "./Identity.sol";
 import "./IIdDirectory.sol";
 
+
 contract IdDirectory is IIdDirectory, AragonApp, AppProxyFactory, AridConstants {
 
     bytes32 constant public DIRECTORY_MANAGER_ROLE = bytes32(1);
 
+    function IdDirectory() public {
+
+    }
 
     modifier managerOrIdentity(address identity) {
         require( canPerform(msg.sender, DIRECTORY_MANAGER_ROLE, new uint256[](0)) ||
@@ -58,3 +62,5 @@ contract IdDirectory is IIdDirectory, AragonApp, AppProxyFactory, AridConstants 
 //        acl.revokeAll(identity, Identity(identity).EXECUTE_ROLE());
     }
 }
+
+

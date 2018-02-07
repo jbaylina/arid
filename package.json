@@ -4,13 +4,20 @@
   "description": "Identity System",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run build; mocha",
     "build": "solcpiler --input=\"./contracts/*.sol\" --solc-version=\"v0.4.18+commit.9cf6e910\" "
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@aragon/os": "^3.0.2",
-    "solcpiler": "0.0.14"
+    "@aragon/os": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "eth-contract-class": "0.0.8",
+    "ganache-cli": "^7.0.0-beta.0",
+    "solcpiler": "0.0.15",
+    "web3": "^1.0.0-beta.29"
   }
 }

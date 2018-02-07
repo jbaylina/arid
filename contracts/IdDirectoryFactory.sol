@@ -8,20 +8,20 @@ import "./IdDirectory.sol";
 import "./Identity.sol";
 import "./AridConstants.sol";
 
-
 contract IdDirectoryFactory is DAOFactory, AppProxyFactory, AridConstants {
 
-    IdDirectory idDirectoryBase;
-    Identity identityBase;
+    IdDirectory public idDirectoryBase;
+    Identity public identityBase;
 
     event DeployIdDirectory(IdDirectory idDirectory);
 
-    function IdDirectoryFactory() public {
+    function IdDirectoryFactory() public DAOFactory(address(0)) {
         idDirectoryBase = new IdDirectory();
         identityBase = new Identity();
     }
 
     function newIdDirectory(address directoryManager) public returns(IdDirectory) {
+
         Kernel dao = newDAO(this);
         ACL acl = ACL(dao.acl());
 
@@ -55,3 +55,4 @@ contract IdDirectoryFactory is DAOFactory, AppProxyFactory, AridConstants {
 
     }
 }
+
