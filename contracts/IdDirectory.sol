@@ -13,6 +13,8 @@ contract IdDirectory is IIdDirectory, AragonApp, AppProxyFactory, AridConstants 
 
     bytes32 constant public DIRECTORY_MANAGER_ROLE = bytes32(1);
 
+    event NewIdentity(address identity, address owner);
+
     function IdDirectory() public {
 
     }
@@ -35,6 +37,8 @@ contract IdDirectory is IIdDirectory, AragonApp, AppProxyFactory, AridConstants 
         ACL acl = ACL(kernel.acl());
 
         acl.createPermission(identityOwner, address(identity), identity.EXECUTE_ROLE(), this);
+
+        NewIdentity(identity, identityOwner);
     }
 
     function resetOwner(address identity, address newIdentityOwner) public managerOrIdentity(identity) {

@@ -35,6 +35,8 @@ contract IdDirectoryFactory is DAOFactory, AppProxyFactory, AridConstants {
 
         DeployIdDirectory(idDirectory);
 
+        dao.setApp(dao.APP_ADDR_NAMESPACE(), ID_DIRECTORY_APP_ID, idDirectory);
+
         dao.setApp(dao.APP_BASES_NAMESPACE(), ID_IDENTITY_APP_ID, identityBase);
 
         acl.createPermission(directoryManager, idDirectory, idDirectory.DIRECTORY_MANAGER_ROLE(), directoryManager);

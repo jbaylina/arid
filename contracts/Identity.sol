@@ -13,7 +13,6 @@ contract Identity is AragonApp, AridConstants {
     event Received (address indexed sender, uint value);
 
     function Identity() public {
-
     }
 
     function () public payable {
@@ -34,7 +33,7 @@ contract Identity is AragonApp, AridConstants {
     }
 
     function addExecutor(address newExecutor) public auth(EXECUTE_ROLE) {
-        IIdDirectory d = IIdDirectory(kernel.getApp(ID_DIRECTORY_APP_ID));
+        IIdDirectory d = IIdDirectory(kernel.getApp(ID_DIRECTORY_APP));
         d.addExecutor(this, newExecutor);
     }
 
